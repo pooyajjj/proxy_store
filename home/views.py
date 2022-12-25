@@ -7,3 +7,6 @@ class HomeView(View):
         pass
     def pots(self, request):
         pass
+
+class pooya(View):
+    pass
