@@ -22,3 +22,11 @@ class UserViewSet(viewsets.ViewSet):
     def list(self, request):
         srz_data = UserSerializer(instance=self.queryset, many=True)
         return Response(data=srz_data.data)
+
+
+class AllUser(APIView):
+    data = User.objects.all()
+
+    def get(self, request):
+        srz_data = UserSerializer(instance=self.data, many=True)
+        return Response(data=srz_data.data, status=status.HTTP_200_OK)
