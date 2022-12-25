@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from .managers import UserManager
-
+# from .managers import UserManager
+from django.contrib.auth.models import UserManager
 
 class User(AbstractUser):
     email = models.EmailField(max_length=225, unique=True)
@@ -26,9 +26,9 @@ class User(AbstractUser):
     def has_module_perms(self, app_label):
         return True
 
-    @property
-    def is_staff(self):
-        return self.is_admin
+    # @property
+    # def is_staff(self):
+    #     return self.is_admin
 
 
 
