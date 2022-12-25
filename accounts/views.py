@@ -30,3 +30,24 @@ class AllUser(APIView):
     def get(self, request):
         srz_data = UserSerializer(instance=self.data, many=True)
         return Response(data=srz_data.data, status=status.HTTP_200_OK)
+
+
+class PhoneActive(APIView):
+    pass
+
+
+
+class EmailActive(APIView):
+    pass
+
+
+class ComplateInformation(APIView):
+    pass
+
+
+
+
+
+
+
+
