@@ -5,7 +5,7 @@ from django.contrib.auth.models import UserManager
 
 class User(AbstractUser):
     email = models.EmailField(max_length=225, unique=True)
-    phone_num = models.CharField(max_length=11, unique=True)
+    phone_num = models.CharField(max_length=11)
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
     is_active = models.BooleanField(default=True)
