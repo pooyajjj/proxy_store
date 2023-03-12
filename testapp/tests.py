@@ -10,18 +10,18 @@ class ProductsViewTestCase(APITestCase):
     def setUp(self):
         self.client = Client()
         self.products = [
-            products(name='product1', price=10.0, is_stock=True),
-            products(name='product2', price=20.0, is_stock=False),
-            products(name='product3', price=30.0, is_stock=True)
+            products(name='product1', price=10.0, is_stock=True, slug = 'product1'),
+            products(name='product2', price=20.0, is_stock=False, slug = 'product2'),
+            products(name='product3', price=30.0, is_stock=True, slug = 'product3')
         ]
         products.objects.bulk_create(self.products)
 
     def test_products_view(self):
         # Test GET request
-        response = self.client.get('/products/')
+        response = self.client.get('/product/')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         
         # Test that only products with is_stock=True are returned
-        expected_products = pro.objects.filter(is_stock=True)
+        expected_products = products.objects.filter(is_stock=True)
         serz_data = ProductsSerializers(instance=expected_products, many=True)
         self.assertEqual(response.data, serz_data.data)
